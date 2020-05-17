@@ -3,19 +3,18 @@ const playerKey1 = localStorage.key(0);
 const playerKey2 = localStorage.key(1);
 const player = ["",localStorage.getItem(playerKey1),localStorage.getItem(playerKey2)]; 
 
-//character image 
-var characterList = [
-	{characterID:148, characterName:"Arya Stark", characterImage:"arya.png"},
-	{characterID:238, characterName:"Jon Snow", characterImage:"jon.png"},-
-	{characterID:529, characterName:"Daenerys Targaryen", characterImage:"danny.png"},
-	{characterID:583, characterName:"Melisandre", characterImage:"melisandre.png"},
-	{characterID:743, characterName:"Cersei Lannister", characterImage:"cersei.png"},
-	{characterID:957, characterName:"Visenya Targaryen", characterImage:"visenya.png"},
-	{characterID:1052, characterName:"Jaime Lannister", characterImage:"jaime.png"},
-	{characterID:271, characterName:"Tyrion Lannister", characterImage:"tyrion.png"},
-	{characterID:2024, characterName:"Sansa Stark", characterImage:"sansa.png"},
-	{characterID:2071, characterName:"Tormund", characterImage:"tormund.png"}
-	];
+
+const api = 'http://thenerdhub.eu/hub/game/gop/json/character.json';
+let url = api
+var characterList;
+
+fetch(url)
+	.then(result => result.json())
+	.then((res) => {
+		characterList = res;
+		activePlayers();
+	})
+	.catch(err => console.log(err));
 
 // Variables 
 // Global Variables
@@ -31,24 +30,26 @@ let gamecharacter = ["",document.createElement('img'),document.createElement('im
 let character = ["",document.createElement('img'),document.createElement('img')];  
 
 //active players
-for (let p = 1; p < player.length; p++) {
-	
-	var pCharacter = document.querySelector('.p' + p + '-character');
+function activePlayers(){
+	for (let p = 1; p < player.length; p++) {
+		
+		var pCharacter = document.querySelector('.p' + p + '-character');
 
-	character[p].classList.add('character');
+		character[p].classList.add('character');
 
-	pCharacter.appendChild(character[p]);
+		pCharacter.appendChild(character[p]);
 
-	let characterUrl = 'images/characters/';  //folder to the images of characters
+		let characterUrl = 'images/characters/';  //folder to the images of characters
 
-	character[p].src = characterUrl + characterList.find(x => x.characterName === player[p]).characterImage;
+		character[p].src = characterUrl + characterList.find(x => x.Name === player[p]).characterImage;
 
-	gamecharacter[p].classList.add('gamecharacter');
-	gamecharacter[p].classList.add('gamecharacter'+ p);
+		gamecharacter[p].classList.add('gamecharacter');
+		gamecharacter[p].classList.add('gamecharacter'+ p);
 
-	gamecharacter[p].src = character[p].src;  //Game Character1 is the same as the character player1 selected 
+		gamecharacter[p].src = character[p].src;  //Game Character1 is the same as the character player1 selected 
 
-	gameBoard.appendChild(gamecharacter[p]);   //Exectutes the game character with the correct image to the game board div. 
+		gameBoard.appendChild(gamecharacter[p]);   //Exectutes the game character with the correct image to the game board div. 
+	}
 }
 
 // keyboard

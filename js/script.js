@@ -1,36 +1,24 @@
 //fetching character info
-const api = 'https://anapioficeandfire.com/api/characters/';
+//const api = 'https://anapioficeandfire.com/api/characters/';
+const api = 'http://thenerdhub.eu/hub/game/gop/json/character.json';
 
-//character image 
-var characterList = [
-	{characterID:148, characterName:"Arya Stark", characterImage:"arya.png"},
-	{characterID:238, characterName:"Jon Snow", characterImage:"jon.png"},
-	{characterID:529, characterName:"Daenerys Targaryen", characterImage:"danny.png"},
-	{characterID:583, characterName:"Melisandre", characterImage:"melisandre.png"},
-	{characterID:743, characterName:"Cersei Lannister", characterImage:"cersei.png"},
-	{characterID:957, characterName:"Visenya Targaryen", characterImage:"visenya.png"},
-	{characterID:1052, characterName:"Jaime Lannister", characterImage:"jaime.png"},
-	{characterID:271, characterName:"Tyrion Lannister", characterImage:"tyrion.png"},
-	{characterID:2024, characterName:"Sansa Stark", characterImage:"sansa.png"},
-	{characterID:2071, characterName:"Tormund", characterImage:"tormund.png"}
-	];
 
-for (let i = 0; i < characterList.length; i++) {
-	let url = api + characterList[i].characterID;
+let url = api //+ characterList[i].characterID;
 
-	fetch(url)
-		.then(result => result.json())
-		.then((res) => {
-			createCard(res);
-		})
-		.catch(err => console.log(err));
-}
+fetch(url)
+	.then(result => result.json())
+	.then((res) => {
+		for (let i = 0; i < res.length; i++) {
+		createCard(res,i);
+		}
+	})
+	.catch(err => console.log(err));
 
  // Creating the character cards
 const cards = document.getElementById('cards');
 localStorage.clear();
 
-function createCard(result) {
+function createCard(result,i) {
 	//creating div
 	let characterContainer = document.createElement('div');
 	characterContainer.classList.add('card');
@@ -40,7 +28,7 @@ function createCard(result) {
 	let name = document.createElement('p');
 	name.classList.add('name');
 	characterContainer.appendChild(name);
-	name.innerHTML = '<h2>' + result['name'] + '</h2>';
+	name.innerHTML = '<h2>' + result[i].Name + '</h2>';
 	//source for our character images
 	let character = document.createElement('img');
 	character.classList.add('character');
@@ -48,16 +36,16 @@ function createCard(result) {
 	let characterUrl = 'images/characters/';
 
 	//linking character image to card
-	character.src = characterUrl + characterList.find(x => x.characterName === result['name']).characterImage;
+	character.src = characterUrl + result[i].characterImage //characterList.find(x => x.characterName === result[i].Name ).characterImage;
 
 	//  Culture info	
 	let culture = document.createElement('p');
 	culture.classList.add('culture');
 	characterContainer.appendChild(culture);
-		if (result['culture'] === '') {
+		if (result[i].Culture === '') {
 		culture.innerHTML = 'Culture: <b>Unknown</b>';
 		} else {
-			culture.innerHTML = 'Culture: <b>' + result['culture'] + '</b>'; 
+			culture.innerHTML = 'Culture: <b>' + result[i].Culture + '</b>'; 
 	}
 
 	
@@ -65,10 +53,10 @@ function createCard(result) {
 	let titles = document.createElement('p');
 	titles.classList.add('titles');
 	characterContainer.appendChild(titles);
-		if (result['titles'] === '')  {
+		if (result[i].Titles === '')  {
 		titles.innerHTML = 'Titles: <b>Unknown</b>';
 		} else { 
-		titles.innerHTML = 'Titles: ' + result['titles'];
+		titles.innerHTML = 'Titles: ' + result[i].Titles;
 		}
 		
 	
@@ -78,10 +66,10 @@ function createCard(result) {
 	let born = document.createElement('p');
 	born.classList.add('born');
 	characterContainer.appendChild(born);
-		if (result['born'] === '') {
+		if (result[i].Born === '') {
 			born.innerHTML = 'Born: <b>Unknown</b>';
 		} else {
-			born.innerHTML = 'Born: <b>' + result['born'] + '</b>';
+			born.innerHTML = 'Born: <b>' + result[i].Born + '</b>';
 		} 
 		
 
@@ -93,17 +81,17 @@ function createCard(result) {
 			localStorage.clear();
 			reset();
 			//Extra is created for player 1 so you can overlap pick charcaters more smoodly
-			localStorage.player1 = result['name']; // Imgae enlarges while selected
+			localStorage.player1 = result[i].Name ; // Imgae enlarges while selected
 			characterContainer.style.boxShadow = "10px 20px 30px #F8CE44";
 			character.style.transform = 'scale(1.3)'; // Imgae enlarges while selected
 			createBannerForPlayer1();
 		} else if (localStorage.player1) {
-			localStorage.player2 = result['name'];
+			localStorage.player2 = result[i].Name ;
 			characterContainer.style.boxShadow = "10px 20px 30px #53A9E2";  // Imgae enlarges while selected
 			character.style.transform = 'scale(1.3)';  // Imgae enlarges while selected
 			createBannerForPlayer2();
 		} else {
-			localStorage.player1 = result['name'];
+			localStorage.player1 = result[i].Name ;
 			characterContainer.style.boxShadow = "10px 20px 30px #F8CE44";  //Creates boxshadow around the card selected
 			character.style.transform = 'scale(1.3)';    // Imgae enlarges while selected
 			createBannerForPlayer1(); 
