@@ -1,0 +1,547 @@
+/*
+ * VARIABLES
+*/
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
+
+
+/* General CSS Variables */
+/* For easy change in color and hue*/
+:root {
+  --dark: #333;
+  --grey: rgb(100, 100, 100);
+  --light: #F8F9FA;
+  --yellow: rgb(248, 206, 68); /*#F8CE44*/
+  --blue:  rgb(83, 169, 226);   /*#53A9E2*/
+
+  --glow: 0 1px 5px rgba(241, 205, 42, 0.8);
+  --shadow: 2 2px 5px rgba(63, 58, 58, 0.938);
+
+  --font-family:'Luckiest Guy', cursive;
+  --body-fonts: "Source Sans Pro", sans-serif;}
+
+
+
+
+/*========
+===BASE===
+==========*/
+
+body {
+  
+  background: linear-gradient( rgba(0, 0, 0, 0.308), rgba(0, 0, 0, 0.5) ),  url("../images/backgrounds/background.png");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;}
+
+h1, h2, h3 {
+  font-family: var(--font-family);
+  color: var(--light); }
+
+h1 {
+  font-size: 55px;
+ }
+
+h2 {
+  font-size: 45px;}
+
+h3 {
+  font-size: 30px; }
+  
+
+h4 {
+    font-family: var(--font-family);
+    font-size: 18px; 
+    color: var(--dark);}   
+
+h5 {
+  font-size: 25px;
+  font-family: var(--font-family) }
+
+
+p {
+  font-size: 16px; }
+
+a {
+  background-color: transparent;
+  color: var(--light); }
+
+
+.wrapper {
+  text-align: center; }
+
+ .header {
+     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    }
+
+ /*===========
+====Logo===
+=============*/
+
+.logo {
+  text-align: center;
+  width: 300px;}
+
+  @media (max-width: 600px) {
+  .logo {
+    width: 200px;}}
+
+
+    .logolarge {
+      text-align: center;
+      height: 300px;}
+    
+
+      @media (max-width: 600px) {
+        .logolarge {
+          height: 200px;}} 
+
+
+/*===========
+====BUTTON===
+=============*/
+    
+
+
+    /* ready button */
+      .ready-button {
+      background-color: var(--yellow);
+      color: var(--light);
+      font-family: var(--font-family); 
+      font-size: 25px;
+      border-radius: 35px;
+      text-decoration: none;
+      cursor: pointer;
+      border: 5px solid; 
+      border-color: var(--yellow);
+      padding: 20px 35px;
+      margin-bottom: 50px;
+      box-shadow: var(--shadow);}
+
+
+      .ready-button:hover {
+        border: 5px solid; 
+        border-color: var(--yellow);
+        background-color: var(--light);
+        opacity: 0.7;
+        color: var(--dark);}
+
+      
+
+      /* simple button*/
+      .simple-button {
+        background-color: transparent;
+        font-size: 25px;
+        font-family: var(--font-family);  
+        color: var(--light);
+        border-radius: 35px;
+        border: 5px solid; 
+        border-color: var(--yellow);
+        text-decoration: none;
+        cursor: pointer;
+        margin-top: auto;
+        padding: 20px 35px;}
+
+        .simple-button:hover {
+          background-color: var(--light);
+          opacity: 0.4;
+          color: var(--dark);}
+
+          
+    
+        
+      
+    /* dice roll buttons (see script for disabled */
+    .roll-button{
+      background-color: var(--yellow);
+      font-size: 25px;
+      font-family: var(--font-family);  
+      color: var(--light);
+      border-radius: 35px;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      padding: 20px 35px;}
+
+      
+
+      /* button responisivenes*/ 
+      @media (max-width: 800px) {
+      .roll-button {
+        padding: 15px 20px;
+        font-size: 16px; } 
+      
+        .ready-button {
+          padding: 15px 20px;
+          font-size: 16px; } 
+
+          .simple-button {
+            padding: 15px 20px;
+            font-size: 16px; }}
+
+
+
+
+        
+/* =====================
+ ==== CHARACTER CARDS===
+========================*/
+    /*character select header */
+  .character-select{
+      font-family: var(--font-family);     
+      color: var(--light);
+      text-align: center;
+      margin: 30px;
+      font-size: 55px;
+      padding: 10px; }
+    @media (max-width: 500px) {
+        .character-select {
+            font-size: 30px;  } 
+          } 
+  
+    /* character cards */
+    .cards {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; }
+
+     .cards .card {
+      border-radius: 80px/10px;
+      cursor: pointer;
+      color: var(--dark);
+      background-color: rgba(255, 255, 255, 0.664); /*transparent background */
+      padding: 10px;
+      margin: 20px;
+      text-align: center;
+      width: 220px;
+			height: 500px;
+			border: 2px solid var(--yellow);
+      display: flex;
+      flex-direction: column; 
+      align-items: center; /* to avoid image stratcing */
+      position: relative; }
+      
+
+    
+      /* Name of character */ 
+      .name h2 {
+        font-family: var(--font-family);
+        font-size: 18px; 
+        color: var(--dark);}  
+   
+      
+      /*character card info*/
+    .card p {
+      font-family: var(--body-fonts);}    
+
+
+    /* Character image */   
+        .character {
+          height: 200px;
+          transition: all .2s; }    
+ 
+        
+
+      /* ===========
+      ==== Banner===
+      ==============*/
+      /*banner for player1*/
+    .banner1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        font-family: var(--font-family);    
+        width: 240px;
+        height: 80px;
+        position: absolute;
+        top: 400px;
+        border-radius: 30px/10px;
+        font-size: 30px;
+        color: var(--light);
+        background-color: var(--yellow); }
+       .banner1:after {
+          content: 'Player 1'; }
+
+   
+
+        /*banner for player2*/
+        .banner2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;    
+        font-family: var(--font-family);
+        width: 240px;
+        height: 80px;
+        position: absolute;
+        top: 400px;
+        border-radius: 30px/10px;;
+        font-size: 30px;
+        color: var(--light);
+        background-color: var(--blue); }
+        .banner2:after {
+          content: 'Player 2'; }
+
+
+
+
+
+/*=============
+===GAME PAGE===
+===============*/
+
+/* Player header section */
+.players {
+   justify-content: center;
+   display: flex;
+  align-items: flex-start; }
+
+  .players h4 {
+    color: var(--light);
+  }
+
+
+  .game-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    position: relative; }
+
+      /* Player character image */
+    @media (max-width: 500px) {
+      .p1-character .character {
+      transform: scale(0.6);} 
+      }
+    @media (max-width: 500px) {
+      .p2-character .character {
+      transform: scale(0.6);} 
+      }
+
+  /*VS header */
+  .vs {
+    font-family: var(--font-family);
+    color: var(--light);
+    padding: 65px 20px; }
+    @media (max-width: 600px) {
+      .vs {
+        padding: 10px 0px;} 
+      }
+      @media (max-width: 600px) {
+        .vs h1{
+          font-size: 16px;} 
+        }
+
+
+.game-container {
+  position: relative; 
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;}
+
+  .dice-container {
+    position: relative;
+    width: 250px;}
+    @media screen and (max-width: 1100px) {
+  .dice-container {
+        width: unset; } }
+        
+/* Dice image */
+  .dice-image {
+      width: 130px;
+      margin-bottom: 70px;}
+      
+  
+
+/* Gaming Board Responsiveness*/
+  @media screen and (max-width: 1100px) {
+  .player1-dice-container {
+      order: 1; }
+  .player2-dice-container {
+      order: 2; }
+  .game-container .game-wrapper {
+      order: 3;
+      z-index: 1; }
+  .player1-dice-container p {
+      display: none; } 
+    .player2-dice-container p {
+        display: none; }
+    .dice-image {
+        width: 50px;} }   
+
+  
+
+  .game-wrapper {
+    position: relative; }
+
+   
+
+    /* Game Board */
+   .game-board {
+      background: url("../images/backgrounds/game_map.png");  /* Game Map */
+      width: 730px;
+      height: 1030px;
+      margin-bottom: 100px;
+      margin-top: 30px;
+      position: relative;
+      box-shadow: var(--shadow);}
+
+      /*Character token*/
+      .gamecharacter {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        width: 50px;
+        transition: all .4s ease-in-out; } /* animates the pictures to illustrate character walking */
+        
+
+      /* Gameinfo  - traps etc */
+     .gameinfo-container {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        
+        .gameinfo {
+          z-index: 3;
+          height: 1030px;  /*should be size of map */
+          width: 730px;
+          background: url("../images/backgrounds/gameinfo.png"); /* picture for traps, messages */
+          background-position: center;
+          background-size: cover;
+          opacity: 0;
+          transition: all .4s ease-in-out; 
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column; }
+
+      
+          .gameinfo-text1 {
+            color: var(--yellow); 
+            margin: 25px;
+            font-size: 50px; }
+
+          .gameinfo-text2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+            }
+
+          .gameinfo-text3 {
+            font-size: 30px; }
+
+
+            
+       /* Game map responisive  */
+       @media screen and (max-width: 2000px) {
+        .game-container .game-wrapper  {
+          transform: scale(0.8); } }       
+    
+    @media screen and (max-width: 730px) {
+      .game-container .game-wrapper {
+        transform: scale(0.6); } }
+    @media screen and (max-width: 445px) {
+      .game-container .game-wrapper {
+        transform: scale(0.4);
+        transform-origin: top;
+        margin-top: 20px; } } 
+
+
+
+
+
+/*dont display position*/ 
+.gamelog, .position {
+  display: none !important; }
+
+
+
+
+
+
+    
+      /*===============
+      ===WINNER PAGE===
+      ==================*/
+
+    /* Header - Throne belongs to.. */
+    span{
+      font-family: var(--font-family);
+      color: var(--blue); /* color the header turnes from */
+      transition: all 0.4s ease-in; /* the speed of transitioning of the colors */
+      }
+
+    span.fade{
+      color: var(--yellow) /*color the header turns in to */
+    }
+
+
+
+
+    /* winner info container */
+      .character-winner {
+        position: relative;
+        top: 0px;
+        left: 0;
+        right: 0;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        display: inline-block;
+      }
+ 
+    /* Character image of the winner */
+    #winnerimg {
+    
+      height: 400px;
+      padding-left: 60px;
+      margin-top: 150px;
+      margin-bottom: 30px; }
+
+
+      /* Throne image*/
+      #throne {
+        position: absolute;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        width: 389px;
+        top: 0px;
+        left: 0%;
+        right: 0;
+        z-index: -2;
+        display: block;
+      }
+
+      /* Name of the name of winner Character*/
+     #winnername {
+       font-family: var(--font-family);
+       color: var(--light); }
+
+
+
+      canvas{
+        filter: blur(1px);
+        position:fixed; 
+        z-index: -10;
+      }
+
+
+
+
+
+
+
+
+

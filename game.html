@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style/style.css">
+    <title>Game - Play</title>
+</head>
+<body>
+
+	
+
+<div class="wrapper">
+	<img class="logo" src="images/backgrounds/logo-s.png" alt="logo">
+
+	<!-- Player vs player-->
+	<div class="players">
+		<div class="player-container" id="player1">
+			<h4>Player 1:</h4>
+			
+			<div class="p1-character"></div><!--character /token for player 1-->
+		</div>
+		<div class="vs"><h1>VS</h1></div>
+		<div class="player-container" id="player2">
+			<h4>Player 2:</h4>
+			<div class="p2-character"></div> <!--character /token for player 2-->
+		</div>
+	</div>
+
+	<!--Game Board-->
+	<div class="game-container">
+		<!-- Dice player 1-->
+		<div class="dice-container">
+			<div class="dice" id="dice1" > <img class="dice-image" id="diceimage1"  src=""></div>
+			<div class="start"></div>
+			<a class="roll-button" id="rollPlayer1" >Roll (A)</a>
+			<p class="position" id="positionPlayer1"></p>
+			<div class="gamelog" id="gamelog1" ></div>
+		</div>
+
+
+		<div class="game-wrapper">
+			<div id="game-board" class="game-board">
+				<!-- Game info - for traps-->
+				<div class="gameinfo-container">
+					<div class="gameinfo">
+						<h4 class="gameinfo-text1"></h4>
+						<h4 class="gameinfo-text2"></h4>
+						<h4 class="gameinfo-text3"></h4>
+					</div>
+				</div>
+			</div>	
+		</div>
+
+
+		<!-- Dice player 2-->
+		<div class="dice-container">
+			<div class="dice" id="dice2" ><img class="dice-image" id="diceimage2"  src=""></div>
+			<a class="roll-button" id="rollPlayer2" >Roll (L)</a>
+			<p class="position" id="positionPlayer2"></p>
+			<div class="gamelog" id="gamelog2" ></div>
+		</div>
+	</div>
+
+
+
+
+	
+	<br>
+	<!-- Back home-->
+	<a class="simple-button" href="index.html">Back to player selection</a>
+	<div class="gamelog-container">
+	</div>
+</div>
+
+
+<script src="js/game.js"></script>
+</body>
+</html> 
